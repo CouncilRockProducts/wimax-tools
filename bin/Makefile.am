@@ -5,7 +5,7 @@ INCLUDES = \
 	-I$(top_builddir)/include \
 	$(I2400M_INCLUDES)
 
-LDADD = ../lib/libwimaxll.la $(LIBNL1_LIBS)
+LDADD = ../lib/libwimaxll.la $(LIBNL3_LIBS)
 
 dist_bin_SCRIPTS = 			\
 	wimaxll-reset			\
@@ -19,7 +19,7 @@ bin_PROGRAMS = 				\
 	wimaxll
 
 AM_CFLAGS = @GLIB_CFLAGS@ -DPLUGINDIR=\""$(plugindir)"\"
-AM_LDFLAGS = @GLIB_LIBS@ ../lib/libwimaxll.la $(LIBNL1_LIBS)
+AM_LDFLAGS = @GLIB_LIBS@ ../lib/libwimaxll.la $(LIBNL3_LIBS)
 
 wimaxll_LDFLAGS = $(AM_LDFLAGS) -ldl -Wl,--export-dynamic -Wl,--version-script=wimaxll.ver
 wimaxll_DEPENDENCIES = wimaxll.ver

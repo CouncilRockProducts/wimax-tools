@@ -181,8 +181,8 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
-LIBNL1_CFLAGS = @LIBNL1_CFLAGS@
-LIBNL1_LIBS = @LIBNL1_LIBS@
+LIBNL3_CFLAGS = @LIBNL3_CFLAGS@
+LIBNL3_LIBS = @LIBNL3_LIBS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -272,7 +272,7 @@ INCLUDES = \
 	-I$(top_builddir)/include \
 	$(I2400M_INCLUDES)
 
-LDADD = ../lib/libwimaxll.la $(LIBNL1_LIBS)
+LDADD = ../lib/libwimaxll.la $(LIBNL3_LIBS)
 dist_bin_SCRIPTS = \
 	wimaxll-reset			\
 	wimaxll-rfkill			\
@@ -282,7 +282,7 @@ nodist_bin_SCRIPTS = \
 	wimax-tools-version
 
 AM_CFLAGS = @GLIB_CFLAGS@ -DPLUGINDIR=\""$(plugindir)"\"
-AM_LDFLAGS = @GLIB_LIBS@ ../lib/libwimaxll.la $(LIBNL1_LIBS)
+AM_LDFLAGS = @GLIB_LIBS@ ../lib/libwimaxll.la $(LIBNL3_LIBS)
 wimaxll_LDFLAGS = $(AM_LDFLAGS) -ldl -Wl,--export-dynamic -Wl,--version-script=wimaxll.ver
 wimaxll_DEPENDENCIES = wimaxll.ver
 CLEANFILES = wimaxll.exp wimaxll.ver

@@ -127,8 +127,8 @@ INSTALL_SCRIPT = @INSTALL_SCRIPT@
 INSTALL_STRIP_PROGRAM = @INSTALL_STRIP_PROGRAM@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
-LIBNL1_CFLAGS = @LIBNL1_CFLAGS@
-LIBNL1_LIBS = @LIBNL1_LIBS@
+LIBNL3_CFLAGS = @LIBNL3_CFLAGS@
+LIBNL3_LIBS = @LIBNL3_LIBS@
 LIBOBJS = @LIBOBJS@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -217,7 +217,7 @@ INCLUDES = \
 	-I$(top_builddir)/include -I$(top_srcdir)/include \
 	$(I2400M_INCLUDES)
 
-LDADD = ../lib/libwimaxll.la $(LIBNL1_LIBS)
+LDADD = ../lib/libwimaxll.la $(LIBNL3_LIBS)
 testdir = $(pkglibdir)/test
 all: all-am
 
