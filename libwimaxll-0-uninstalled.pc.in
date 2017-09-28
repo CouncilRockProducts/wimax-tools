@@ -6,6 +6,6 @@ includedir=${prefix}/include
 Name: @PACKAGE_TARNAME@
 Description: @PACKAGE_NAME@
 Version: @PACKAGE_VERSION@
-Requires: libnl-1 >= 1.0
-Libs: -L${libdir} -lwimaxll @LIBNL1_LIBS@
+Requires: libnl-3.0 >= 3.0
+Libs: -L${libdir} -lwimaxll @LIBNL3_LIBS@
 Cflags: -I${includedir}

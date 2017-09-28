@@ -613,8 +613,8 @@ GLIB_LIBS
 GLIB_CFLAGS
 LINUX_INCLUDE_PATH
 I2400M_INCLUDES
-LIBNL1_LIBS
-LIBNL1_CFLAGS
+LIBNL3_LIBS
+LIBNL3_CFLAGS
 PKG_CONFIG_LIBDIR
 PKG_CONFIG_PATH
 PKG_CONFIG
@@ -744,7 +744,7 @@ with_gnu_ld
 enable_libtool_lock
 enable_doxygen_doc
 enable_debug
-with_libnl1
+with_libnl3
 with_linux
 with_i2400m
 '
@@ -760,8 +760,8 @@ CPP
 PKG_CONFIG
 PKG_CONFIG_PATH
 PKG_CONFIG_LIBDIR
-LIBNL1_CFLAGS
-LIBNL1_LIBS
+LIBNL3_CFLAGS
+LIBNL3_LIBS
 GLIB_CFLAGS
 GLIB_LIBS'
 
@@ -1403,7 +1403,7 @@ Optional Packages:
   --with-pic              try to use only PIC/non-PIC objects [default=use
                           both]
   --with-gnu-ld           assume the C compiler uses GNU ld [default=no]
-  --with-libnl1           prefix to libnl (>=1.0-pre7) installation; defaults
+  --with-libnl3           prefix to libnl (>=3.0) installation; defaults
                           to whichever is found in the system with pkg-config.
                           USE ABSOLUTE PATHS.
   --with-linux            path to the Linux kernel headers/source (containing
@@ -1430,9 +1430,9 @@ Some influential environment variables:
               directories to add to pkg-config's search path
   PKG_CONFIG_LIBDIR
               path overriding pkg-config's built-in search path
-  LIBNL1_CFLAGS
-              C compiler flags for LIBNL1, overriding pkg-config
-  LIBNL1_LIBS linker flags for LIBNL1, overriding pkg-config
+  LIBNL3_CFLAGS
+              C compiler flags for LIBNL3, overriding pkg-config
+  LIBNL3_LIBS linker flags for LIBNL3, overriding pkg-config
   GLIB_CFLAGS C compiler flags for GLIB, overriding pkg-config
   GLIB_LIBS   linker flags for GLIB, overriding pkg-config
 
@@ -10693,11 +10693,11 @@ if test "${enable_debug+set}" = set; then :
 fi
 
 
-# If libnl-1 is installed
+# If libnl-3.0 is installed
 
-# Check whether --with-libnl1 was given.
-if test "${with_libnl1+set}" = set; then :
-  withval=$with_libnl1; export PKG_CONFIG_PATH="$withval:$withval/lib/pkgconfig"
+# Check whether --with-libnl3 was given.
+if test "${with_libnl3+set}" = set; then :
+  withval=$with_libnl3; export PKG_CONFIG_PATH="$withval:$withval/lib/pkgconfig"
 fi
 
 
@@ -10821,35 +10821,35 @@ $as_echo "no" >&6; }
 fi
 
 pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LIBNL1" >&5
-$as_echo_n "checking for LIBNL1... " >&6; }
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for LIBNL3" >&5
+$as_echo_n "checking for LIBNL3... " >&6; }
 
-if test -n "$LIBNL1_CFLAGS"; then
-    pkg_cv_LIBNL1_CFLAGS="$LIBNL1_CFLAGS"
+if test -n "$LIBNL3_CFLAGS"; then
+    pkg_cv_LIBNL3_CFLAGS="$LIBNL3_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libnl-1 >= 1.0-pre7\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libnl-1 >= 1.0-pre7") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libnl-3.0 >= 3.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libnl-3.0 >= 3.0") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_LIBNL1_CFLAGS=`$PKG_CONFIG --cflags "libnl-1 >= 1.0-pre7" 2>/dev/null`
+  pkg_cv_LIBNL3_CFLAGS=`$PKG_CONFIG --cflags "libnl-3.0 >= 3.0" 2>/dev/null`
 else
   pkg_failed=yes
 fi
  else
     pkg_failed=untried
 fi
-if test -n "$LIBNL1_LIBS"; then
-    pkg_cv_LIBNL1_LIBS="$LIBNL1_LIBS"
+if test -n "$LIBNL3_LIBS"; then
+    pkg_cv_LIBNL3_LIBS="$LIBNL3_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libnl-1 >= 1.0-pre7\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "libnl-1 >= 1.0-pre7") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"libnl-3.0 >= 3.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "libnl-3.0 >= 3.0") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_LIBNL1_LIBS=`$PKG_CONFIG --libs "libnl-1 >= 1.0-pre7" 2>/dev/null`
+  pkg_cv_LIBNL3_LIBS=`$PKG_CONFIG --libs "libnl-3.0 >= 3.0" 2>/dev/null`
 else
   pkg_failed=yes
 fi
@@ -10869,22 +10869,22 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        LIBNL1_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "libnl-1 >= 1.0-pre7" 2>&1`
+	        LIBNL3_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "libnl-3.0 >= 3.0" 2>&1`
         else
-	        LIBNL1_PKG_ERRORS=`$PKG_CONFIG --print-errors "libnl-1 >= 1.0-pre7" 2>&1`
+	        LIBNL3_PKG_ERRORS=`$PKG_CONFIG --print-errors "libnl-3.0 >= 3.0" 2>&1`
         fi
 	# Put the nasty error message in config.log where it belongs
-	echo "$LIBNL1_PKG_ERRORS" >&5
+	echo "$LIBNL3_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (libnl-1 >= 1.0-pre7) were not met:
+	as_fn_error $? "Package requirements (libnl-3.0 >= 3.0) were not met:
 
-$LIBNL1_PKG_ERRORS
+$LIBNL3_PKG_ERRORS
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
 
-Alternatively, you may set the environment variables LIBNL1_CFLAGS
-and LIBNL1_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables LIBNL3_CFLAGS
+and LIBNL3_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details." "$LINENO" 5
 
 elif test $pkg_failed = untried; then
@@ -10896,23 +10896,23 @@ as_fn_error $? "The pkg-config script could not be found or is too old.  Make su
 is in your PATH or set the PKG_CONFIG environment variable to the full
 path to pkg-config.
 
-Alternatively, you may set the environment variables LIBNL1_CFLAGS
-and LIBNL1_LIBS to avoid the need to call pkg-config.
+Alternatively, you may set the environment variables LIBNL3_CFLAGS
+and LIBNL3_LIBS to avoid the need to call pkg-config.
 See the pkg-config man page for more details.
 
 To get pkg-config, see <http://pkg-config.freedesktop.org/>.
 See \`config.log' for more details" "$LINENO" 5; }
 
 else
-	LIBNL1_CFLAGS=$pkg_cv_LIBNL1_CFLAGS
-	LIBNL1_LIBS=$pkg_cv_LIBNL1_LIBS
+	LIBNL3_CFLAGS=$pkg_cv_LIBNL3_CFLAGS
+	LIBNL3_LIBS=$pkg_cv_LIBNL3_LIBS
         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
 $as_echo "yes" >&6; }
 
 fi
-libnl1_prefix=`pkg-config "libnl-1 >= 1.0-pre7" --variable=prefix`
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: Using libnl1 from $libnl1_prefix" >&5
-$as_echo "Using libnl1 from $libnl1_prefix" >&6; }
+libnl3_prefix=`pkg-config "libnl-3.0 >= 3.0" --variable=prefix`
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result: Using libnl3 from $libnl3_prefix" >&5
+$as_echo "Using libnl3 from $libnl3_prefix" >&6; }
 
 
 

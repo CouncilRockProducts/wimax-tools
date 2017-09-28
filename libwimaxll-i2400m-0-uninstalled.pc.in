@@ -6,6 +6,6 @@ includedir=${prefix}/include
 Name: @PACKAGE_TARNAME@ (i2400m specific)
 Description: @PACKAGE_NAME@ (i2400m specific)
 Version: @PACKAGE_VERSION@
-Requires: libnl-1 >= 1.0
-Libs: -L${libdir} -lwimaxll-i2400m -lwimaxll @LIBNL1_LIBS@
+Requires: libnl-3.0 >= 3.0
+Libs: -L${libdir} -lwimaxll-i2400m -lwimaxll @LIBNL3_LIBS@
 Cflags: -I${includedir}

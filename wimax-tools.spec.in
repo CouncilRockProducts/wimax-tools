@@ -15,7 +15,7 @@ License:    BSD
 URL:        http://linuxwimax.org
 Source0:    wimax-tools-%{version}.tar.gz
 Source100:  wimax-tools.yaml
-BuildRequires:  pkgconfig(libnl-1)
+BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(glib-2.0)
 
 %description
