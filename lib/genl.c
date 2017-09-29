@@ -168,13 +168,13 @@ int nl_get_multicast_groups(struct nl_handle *handle,
 }
 
 
-int genl_ctrl_get_version(struct nl_handle *nlh, const char *name)
+int genl_ctrl_get_version(struct nl_sock *nlh, const char *name)
 {
 	int result = -ENOENT;
 	struct genl_family *fam;
 	struct nl_cache *cache;
 
-	cache = genl_ctrl_alloc_cache(nlh);
+	result = genl_ctrl_alloc_cache(nlh,*cache);
 	if (cache == NULL)
 		return nl_get_errno();
 
