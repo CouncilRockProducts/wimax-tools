@@ -407,7 +407,7 @@ struct wimaxll_handle *wimaxll_open(const char *device)
 	if (wmx->nlh_tx == NULL) {
 		result = nl_get_errno();
 		wimaxll_msg(wmx, "E: TX: cannot allocate handle: %d (%s)\n",
-			    result, nl_geterror());
+			    result, nl_geterror(result));
 		goto error_nl_handle_alloc_tx;
 	}
 	nl_socket_enable_msg_peek(wmx->nlh_tx);
@@ -415,7 +415,7 @@ struct wimaxll_handle *wimaxll_open(const char *device)
 	result = nl_connect(wmx->nlh_tx, NETLINK_GENERIC);
 	if (result < 0) {
 		wimaxll_msg(wmx, "E: TX: cannot connect netlink: %d (%s)\n",
-			    result, nl_geterror());
+			    result, nl_geterror(result));
 		goto error_nl_connect_tx;
 	}
 
@@ -424,13 +424,13 @@ struct wimaxll_handle *wimaxll_open(const char *device)
 	if (wmx->nlh_rx == NULL) {
 		result = nl_get_errno();
 		wimaxll_msg(wmx, "E: RX: cannot allocate handle: %d (%s)\n",
-			    result, nl_geterror());
+			    result, nl_geterror(result));
 		goto error_nl_handle_alloc_rx;
 	}
 	result = nl_connect(wmx->nlh_rx, NETLINK_GENERIC);
 	if (result < 0) {
 		wimaxll_msg(wmx, "E: RX: cannot connect netlink: %d (%s)\n",
-			    result, nl_geterror());
+			    result, nl_geterror(result));
 		goto error_nl_connect_rx;
 	}
 	nl_socket_enable_msg_peek(wmx->nlh_rx);
@@ -442,7 +442,7 @@ struct wimaxll_handle *wimaxll_open(const char *device)
 	result = nl_socket_add_membership(wmx->nlh_rx, wmx->mcg_id);
 	if (result < 0) {
 		wimaxll_msg(wmx, "E: RX: cannot join multicast group %u: %d (%s)\n",
-			    wmx->mcg_id, result, nl_geterror());
+			    wmx->mcg_id, result, nl_geterror(result));
 		goto error_nl_add_membership;
 	}
 	/* Now we check if the device is a WiMAX supported device, by

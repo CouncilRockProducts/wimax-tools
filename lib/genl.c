@@ -44,6 +44,7 @@
 #include <netlink/genl/ctrl.h>
 #include <netlink/msg.h>
 #include <netlink/attr.h>
+#include <netlink/cli/utils.h>
 #include "internal.h"
 
 struct handler_arg {
@@ -115,7 +116,7 @@ static int family_handler(struct nl_msg *msg, void *_arg)
  * Enumerates the multicast groups available for a generic netlink
  * family and calls the callback with the arguments of each.
  */
-int nl_get_multicast_groups(struct nl_handle *handle,
+int nl_get_multicast_groups(struct nl_sock *handle,
 			    const char *family,
 			    void (*cbf)(void *, const char *, int),
 			    void *priv)
@@ -172,11 +173,12 @@ int genl_ctrl_get_version(struct nl_sock *nlh, const char *name)
 {
 	int result = -ENOENT;
 	struct genl_family *fam;
-	struct nl_cache *cache;
+	struct nl_cache **cache;
 
-	result = genl_ctrl_alloc_cache(nlh,*cache);
+	result = genl_ctrl_alloc_cache(nlh,cache);
 	if (cache == NULL)
-		return nl_get_errno();
+		fprintf(stderr,"NETLINK error:%s\n",nl_geterror(result));
+		return result;
 
 	fam = genl_ctrl_search_by_name(cache, name);
 	if (fam) {
