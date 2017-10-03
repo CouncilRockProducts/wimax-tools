@@ -40,6 +40,7 @@
 #include <wimaxll.h>
 
 struct nl_msg;
+struct nl_sock;
 struct nlmsgerr;
 struct sockaddr_nl;
 
