@@ -10849,7 +10849,7 @@ if test -n "$LIBNL3_LIBS"; then
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_LIBNL3_LIBS=`$PKG_CONFIG --libs "libnl-3.0 >= 3.0" 2>/dev/null`
+  pkg_cv_LIBNL3_LIBS=`$PKG_CONFIG --libs "libnl-3.0 >= 3.0" "libnl-genl-3.0 >= 3.0" "libnl-nf-3.0 >= 3.0" 2>/dev/null`
 else
   pkg_failed=yes
 fi
