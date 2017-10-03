@@ -173,12 +173,13 @@ int genl_ctrl_get_version(struct nl_sock *nlh, const char *name)
 {
 	int result = -ENOENT;
 	struct genl_family *fam;
-	struct nl_cache **cache;
+	struct nl_cache *cache;
 
-	result = genl_ctrl_alloc_cache(nlh,cache);
-	if (cache == NULL)
+	result = genl_ctrl_alloc_cache(nlh,&cache);
+	if (cache == NULL) {
 		fprintf(stderr,"NETLINK error:%s\n",nl_geterror(result));
 		return result;
+    }
 
 	fam = genl_ctrl_search_by_name(cache, name);
 	if (fam) {
