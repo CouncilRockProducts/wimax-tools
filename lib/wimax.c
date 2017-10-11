@@ -179,7 +179,15 @@ int wimaxll_wait_for_ack(struct wimaxll_handle *wmx)
 	do
 		result = nl_recvmsgs(wmx->nlh_tx, cb);
 	while (ctx.msg_done == 0 && result >= 0);
-	result = ctx.result;
+
+	/* Print out error messages, if there are any */
+	if (result < 0) {
+		nl_perror(result, "Libnl error reading messages: ");
+	}
+	if (ctx.result && ctx.result != -EINPROGRESS) {
+		nl_perror(ctx.result, "Context error: ");
+	}
+
 	nl_cb_set(cb, NL_CB_ACK, NL_CB_CUSTOM, NL_CB_DEFAULT, NULL);
 	nl_cb_set(cb, NL_CB_VALID, NL_CB_CUSTOM, NL_CB_DEFAULT, NULL);
 	nl_cb_err(cb, NL_CB_CUSTOM, NL_CB_DEFAULT, NULL);
