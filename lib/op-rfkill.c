@@ -105,7 +105,7 @@ int wimaxll_rfkill(struct wimaxll_handle *wmx, enum wimax_rf_state state)
 			  "message: %m\n");
 		goto error_msg_alloc;
 	}
-	if (genlmsg_put(msg, NL_AUTO_PID, NL_AUTO_SEQ,
+	if (genlmsg_put(msg, NL_AUTO_PORT, NL_AUTO_SEQ,
 			wimaxll_family_id(wmx), 0, 0,
 			WIMAX_GNL_OP_RFKILL, WIMAX_GNL_VERSION) == NULL) {
 		result = -ENOMEM;
@@ -115,7 +115,7 @@ int wimaxll_rfkill(struct wimaxll_handle *wmx, enum wimax_rf_state state)
 	}
 	nla_put_u32(msg, WIMAX_GNL_RFKILL_IFIDX, (__u32) wmx->ifidx);
 	nla_put_u32(msg, WIMAX_GNL_RFKILL_STATE, (__u32) state);
-	result = nl_send_auto_complete(wmx->nlh_tx, msg);
+	result = nl_send_auto(wmx->nlh_tx, msg);
 	if (result < 0) {
 		wimaxll_msg(wmx, "E: RFKILL: error sending message: %zd\n",
 			  result);
