@@ -160,6 +160,10 @@ int nl_get_multicast_groups(struct nl_sock *handle,
 
 	while (ret > 0)
 		ret = nl_recvmsgs(handle, cb);
+	nl_recvmsgs(handle, cb);  // XXX We get one extra message, clear it
+	// This is because we are getting one more message after `n = nl_recv(sk, &nla, &buf, &creds);` line in the `recvmsgs` function in nl.c
+	// The function simply subtracts from n to go through the buffer, not see if anything is new
+
  nla_put_failure:
  out:
 	nl_cb_put(cb);
